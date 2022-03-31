@@ -5,8 +5,9 @@ COMMENTS_DATA_DIRECTORY = "data/comments.json"
 
 
 def load_data_from_json(path_file):
-    with open(path_file, 'r', encoding='utf-8') as file:
-        return json.load(path_file)
+    with open(path_file, "r", encoding="utf-8") as file:
+        data = json.load(file)
+        return data
 
 
 def get_posts_all():
@@ -32,7 +33,7 @@ def get_comments_by_post_id(post_id):
     result = []
 
     for comment in data:
-        if post_id == data["post_id"]:
+        if post_id == comment["post_id"]:
             result.append(comment)
     return result
 
@@ -44,7 +45,7 @@ def search_for_posts(query):
     query_lower = query.lower()
 
     for post in data:
-        if query_lower in data["content"].lower()
+        if query_lower in post["content"].lower():
             result.append(post)
     return result
 
@@ -55,7 +56,7 @@ def get_post_by_pk(pk):
     result = None
 
     for post in data:
-        if pk == data["pk"]:
+        if int(pk) == post["pk"]:
             result = post
             break
     return result
