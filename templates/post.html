@@ -27,7 +27,7 @@
     <section class="items">
       <div class="items__item item item--post">
         <div class="item__top">
-          <a href="/templates/user-feed.html-feed.html" class="item__head">
+          <a href="{{ url_for('users_field_blueprint.users_field_page', username=post.poster_name ) }}" class="item__head">
             <div class="item__ava-wrap">
               <img src={{ post.poster_avatar }} alt="" class="item__ava" width="47">
             </div>
@@ -37,7 +37,7 @@
             <img src="../static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
           </button>
         </div>
-        <a href="" class="item__post-link">
+        <a href="{{ url_for('post_blueprint.post_page', pk=post.pk ) }}" class="item__post-link">
           <img src={{ post.pic }} alt="" width="348" class="item__post-img">
         </a>
         <div class="item__descr">

@@ -7,29 +7,30 @@ COMMENTS_DATA_DIRECTORY = "data/comments.json"
 def load_data_from_json(path_file):
     with open(path_file, "r", encoding="utf-8") as file:
         data = json.load(file)
-        return data
+
+    return data
 
 
 def get_posts_all():
     data = load_data_from_json(POST_DATA_DIRECTORY)
+    for post in data:
+        post['short'] = post['content'][:100] + "..."
     return data
 
 
 def get_posts_by_user(user_name):
     data = load_data_from_json(POST_DATA_DIRECTORY)
-
     result = []
-    user_name_lower = user_name.lower()
 
+    user_name_lower = user_name.lower()
     for post in data:
-        if user_name_lower in post["poster_name"].lower:
+        if user_name_lower in post["poster_name"].lower():
             result.append(post)
     return result
 
 
 def get_comments_by_post_id(post_id):
     data = load_data_from_json(COMMENTS_DATA_DIRECTORY)
-
     result = []
 
     for comment in data:
@@ -60,5 +61,3 @@ def get_post_by_pk(pk):
             result = post
             break
     return result
-
-
