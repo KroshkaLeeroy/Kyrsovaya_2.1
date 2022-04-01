@@ -16,7 +16,7 @@ def post_page(pk):
     return render_template('post.html', post=post, comments=comments, comment_count=comment_count)
 
 
-@post_blueprint.route('/api/posts/<post_id>')
-def api_posts(post_id):
-    posts = utils.get_post_by_pk(post_id)
+@post_blueprint.route('/api/posts/<int:pk>')
+def api_posts(pk):
+    posts = utils.get_post_by_pk(pk)
     return jsonify(posts)

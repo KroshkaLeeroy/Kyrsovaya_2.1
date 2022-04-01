@@ -26,6 +26,9 @@ def get_posts_by_user(user_name):
     for post in data:
         if user_name_lower in post["poster_name"].lower():
             result.append(post)
+
+    for post in data:
+        post['short'] = post['content'][:100] + "..."
     return result
 
 

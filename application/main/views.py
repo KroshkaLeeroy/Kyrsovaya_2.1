@@ -6,7 +6,6 @@ main_blueprint = Blueprint("main_blueprint", __name__, template_folder="template
 
 @main_blueprint.route('/')
 def main_page():
-    print(current_app.root_path)
     posts = utils.get_posts_all()
     return render_template('index.html', posts=posts)
 
